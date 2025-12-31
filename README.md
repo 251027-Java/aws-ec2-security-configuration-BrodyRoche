@@ -28,10 +28,10 @@ Fill in the following table with appropriate values:
 
 | Rule | Type | Protocol | Port | Source | Purpose |
 |------|------|----------|------|--------|---------|
-| 1    | SSH  | TCP      | ?    | ?      | Admin access |
-| 2    | ?    | TCP      | 80   | ?      | Web traffic |
-| 3    | ?    | TCP      | 443  | ?      | Secure web |
-| 4    | Custom TCP | TCP | ?  | 10.0.0.0/8 | Internal API |
+| 1    | SSH  | TCP      | 22   | 108.66.187.120/32| Admin access |
+| 2    | HTTP | TCP      | 80   | 0.0.0.0/0| Web traffic |
+| 3    | HTTPS| TCP      | 443  | 0.0.0.0/0| Secure web |
+| 4    | Custom TCP | TCP | 8080  | 10.0.0.0/8 | Internal API |
 
 ### Task 2: Create Security Group (Console)
 1. Navigate to EC2 → Security Groups → Create
@@ -76,9 +76,9 @@ Given these symptoms, identify the likely cause:
 
 | Symptom | Likely Cause | Solution |
 |---------|--------------|----------|
-| Can't SSH to instance | ? | ? |
-| Website not loading | ? | ? |
-| API calls timing out | ? | ? |
+| Can't SSH to instance | SSH rule missing/wrong | Add/fix rule, allowing TCP 22 |
+| Website not loading | HTTP(S) not allowed/app not running | Open ports 80/443 and run app |
+| API calls timing out | Port 8080 rule missing/wrong | Add/fix rule, allowing TCP 8080 from 10.0.0.0/8 |
 
 ## Deliverables
 1. Completed security group rules table (Task 1)
